@@ -1,0 +1,42 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.4.1'
+    id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.demo'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.slf4j:slf4j-api:2.0.9' // Use the latest version
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    compileOnly 'org.projectlombok:lombok:1.18.30'
+    annotationProcessor 'org.projectlombok:lombok:1.18.30'
+    implementation("org.springframework.boot:spring-boot-starter-aop")
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    testImplementation 'com.squareup.okhttp3:mockwebserver:4.9.3'
+
+    testImplementation 'io.projectreactor:reactor-test'
+
+//    // Additional dependencies for testing (if necessary)
+//    testImplementation 'org.mockito:mockito-core:4.4.0'
+
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
